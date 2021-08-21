@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<head>
+	<style>
+	input[type="text"]
+	{
+		width: 20px;
+	}
+
+#dotGen
+{
+	display: none;
+}
+
+</style>
+</head>
+<html>
+<body>
+
+<canvas id="myCanvas" width="500" height="200" style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML canvas tag.</canvas>
+<br>
+
+<br>
+<div id = "targetGen">
+<input type="radio" id="html" name="diff" value= 50 checked = "checked"> Easy
+<br>
+<input type="radio" id="html" name="diff" value= 25> Medium
+<br>
+<input type="radio" id="html" name="diff" value= 10> Hard
+<br>
+<br>
+<button onclick="target()">Add target</button>
+</div>
+<div id = "dotGen">
+<span>X =</span><input id = "x" type = "text"><span>    Y=</span><input id = "y" type = "text">
+<button onclick="newDot()">Add dot</button>
+</div>
+
+<script>
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+
+function target()
+{
+
+var x = Math.floor(Math.random() * 490) + 10;
+var y = Math.floor(Math.random() * 190) + 10;
+var targetRad = document.querySelectorAll("input[name=diff]:checked")[0].value;
+
+
+
+//okay, so this can generate a catepillar/ship.  The problem is it can go off the page.
+ctx.beginPath();
+ctx.arc(x, y, targetRad, 0, 2 * Math.PI);
+ctx.fillStyle = "black";
+ctx.fill();
+
+
+
+}
+
+
+</script> 
+
+</body>
+</html>
