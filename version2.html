@@ -55,13 +55,39 @@ ctx.arc(x, y, targetRad, 0, 2 * Math.PI);
 ctx.fillStyle = "black";
 ctx.fill();
 
+localStorage.setItem("targetX", x);
+localStorage.setItem("targetY", y);
+localStorage.setItem("radius", targetRad)
+
+
 document.getElementById("targetGen").style.display = "none";
 document.getElementById("dotGen").style.display= "block";
 
 
 }
 
+function newDot()
+{
+x = document.getElementById("x").value;
+y = document.getElementById("y").value;
+ctx.beginPath();
+ctx.arc(x, y, 5, 0, 2 * Math.PI);
+ctx.fillStyle = "red";
+ctx.fill();
 
+var targetX = localStorage.getItem("targetX");
+var targetY = localStorage.getItem("targetY");
+var range = parseInt(localStorage.getItem("radius")) + 5;
+
+console.log(range);
+
+
+if (x <= targetX + range && x >= targetX - range && y <= targetY + range && y >= targetY - range)
+{
+	alert("hit!")
+}
+
+}
 </script> 
 
 </body>
