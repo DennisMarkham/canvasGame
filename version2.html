@@ -14,7 +14,7 @@
 </style>
 </head>
 <html>
-<body>
+<body onload = "populate()">
 
 <canvas id="myCanvas" width="500" height="200" style="border:1px solid #d3d3d3;">
 Your browser does not support the HTML canvas tag.</canvas>
@@ -37,6 +37,9 @@ Your browser does not support the HTML canvas tag.</canvas>
 </div>
 
 <script>
+
+
+
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
 
@@ -66,6 +69,16 @@ document.getElementById("dotGen").style.display= "block";
 
 }
 
+function reset()
+{
+document.getElementById("targetGen").style.display = "block";
+document.getElementById("dotGen").style.display= "none";
+
+ctx.clearRect(0, 0, 500, 200);
+
+//after reset, project seems to cease to function.  Why?
+}
+
 function newDot()
 {
 x = document.getElementById("x").value;
@@ -84,10 +97,19 @@ console.log(range);
 
 if (x <= targetX + range && x >= targetX - range && y <= targetY + range && y >= targetY - range)
 {
-	alert("hit!")
+	setTimeout(function(){alert("hit!");}, 500);
+}
+else
+{
+	setTimeout(function(){alert("miss!");}, 500);
 }
 
+
+setTimeout(reset, 3000);
+
 }
+
+
 </script> 
 
 </body>
